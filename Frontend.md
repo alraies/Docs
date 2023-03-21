@@ -27,7 +27,7 @@ function onMounted(callback: () => void): void
 ```
 - Example :
 Accessing an element via template ref:
-```
+```vue
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -56,7 +56,7 @@ WARNING
 Do not mutate component state in the updated hook - this will likely lead to an infinite update loop!
 ```
 - Example :
-```
+```vue
 <script setup>
 import { ref, onUpdated } from 'vue'
 
@@ -102,7 +102,7 @@ The mustache tag will be replaced with the value of the msg property from the co
 Attributes that start with : may look a bit different from normal HTML, but it is in fact a valid character for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is optional, but you will likely appreciate it when you learn more about its usage later.
 
 #### Using JavaScript Expressions:
-```
+```vue
 {{ number + 1 }}
 
 {{ ok ? 'YES' : 'NO' }}
@@ -136,7 +136,7 @@ Reactive objects are [JavaScript Proxies](https://developer.mozilla.org/en-US/do
 Takes an inner value and returns a reactive and mutable ref object, which has a single property .value that points to the inner value.
 
 To use reactive state in a component's template, declare and return them from a component's setup() function:
-```
+```vue
 <script setup>
 import { ref } from 'vue'
 
@@ -152,7 +152,7 @@ const count = ref(0)
 
 ### Using Components :
 Values in the scope of <script setup> can also be used directly as custom component tag names:
-```
+```vue
 <script setup>
 import MyComponent from './MyComponent.vue'
 </script>
@@ -165,7 +165,7 @@ import MyComponent from './MyComponent.vue'
 ### Dynamic Components :
 
 Since components are referenced as variables instead of registered under string keys, we should use dynamic **:is** binding when using dynamic components inside **<script setup>**:
-```
+```vue
 <script setup>
 import Foo from './Foo.vue'
 import Bar from './Bar.vue'
@@ -179,7 +179,7 @@ import Bar from './Bar.vue'
 
 ### Namespaced Components :
 You can use component tags with dots like <Foo.Bar> to refer to components nested under object properties. This is useful when you import multiple components from a single file:
-```
+```vue
 <script setup>
 import * as Form from './form-components'
 </script>
@@ -266,7 +266,7 @@ const attrs = useAttrs()
 ### Top-level await :
 
 Top-level await can be used inside <script setup>. The resulting code will be compiled as async setup():
-```
+```vue
 <script setup>
 onmounted(){
     const post = await fetch(`/api/post/1`).then((r) => r.json())
@@ -291,7 +291,7 @@ When a <style> tag has the scoped attribute, its CSS will apply to elements of t
 
 ###  PropType<T> 
 Used to annotate a prop with more advanced types when using runtime props declarations.
-```
+```vue
 import type { PropType } from 'vue'
 
 interface Book {
@@ -316,7 +316,7 @@ export default {
 Computed properties allow us to declaratively compute derived values. However, there are cases where we need to perform "side effects" in reaction to state changes - for example, mutating the DOM, or changing another piece of state based on the result of an async operation.
 
 With Composition API, we can use the ``watch`` function to trigger a callback whenever a piece of reactive state changes:
-```
+```vue
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -440,7 +440,7 @@ const age: number = 0; [easy to track and identify response type]
 ## 5- Do Not Mix v-if and v-for :
 - In Vue, You don’t use v-if on the same element as v-for. While Vue.js compiles the template, it checks all time v-if conditions. It is time-consuming. Instead, we can apply the V-if condition to the parent tag or template to achieve the same.
 Let see one example,
-```
+```vue
 <ul>
     <li v-if="itemList && itemList.length > 0">	  
 	v-for="(item, index) in itemList" 
@@ -472,7 +472,7 @@ Undoubtedly, the most crucial best practices to follow are for Vuejs. If you ask
 
 If you’re part of a larger development team, then you must communicate well, so as to make sure they understand how to use your components. So, please just provide prop validations. You need to avoid challenges and meticulously track all your components to ascertain a prop’s formatting. Check out this example from the Vue documentation.
 
-```
+```vue
 props: {
   status: {
     type: String,
@@ -502,7 +502,7 @@ ThePopup.vue
 For no reason, if you call a method that is created and then monitored is a common mistake Vue developers make . The idea is that the watch hook should be called as soon as a component is initialised.
 
 **BAD!**
-```
+```vue
 created: () {
   this.handlePropertyChange()
 },
@@ -524,7 +524,7 @@ All we need to do now is reorganize our watcher and declare two properties:
 handler (newVal, oldVal) – here is the actual observer method:
 true – when our instance is created, our handler is called.
 **GOOD!**
-```
+```vue
 methods: {0
   handlePropertyChange() {
     // stuff happens
@@ -557,28 +557,3 @@ The more you use third-party packages  in your project, there can be security is
 . 
 
 ``//TODO``
-## Authors
-
-- [@AbdMakktof](https://github.com/alraies)
-
-
-## Contributing
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started. ``//TODO``
-
-Please adhere to this project's `code of conduct`.
-
-
-## Appendix
-
-Any additional information goes here
-
-
-## Badges
-
-
-
-[![MIT License](https://img.shields.io/badge/@-Muraba-green)](https://choosealicense.com/licenses/mit/)
-
