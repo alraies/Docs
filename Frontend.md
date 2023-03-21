@@ -253,7 +253,7 @@ defineExpose({
 
 Usage of ``slots`` and ``attrs`` inside ``<script setup>`` should be relatively rare, since you can access them directly as ``$slots`` and ``$attrs`` in the template. In the rare case where you do need them, use the useSlots and useAttrs helpers respectively:
 
-```
+```vue
 <script setup>
 import { useSlots, useAttrs } from 'vue'
 
@@ -276,7 +276,7 @@ onmounted(){
 ## Scoped CSS :
 
 When a <style> tag has the scoped attribute, its CSS will apply to elements of the current component only. This is similar to the style encapsulation found in Shadow DOM. It comes with some caveats, but doesn't require any polyfills. It is achieved by using PostCSS to transform the following:
-```
+```vue
 <style scoped>
 .example {
   color: red;
@@ -390,7 +390,7 @@ const count = ref(0)
 ### Using a Component
 
 To use a child component, we need to import it in the parent component. Assuming we placed our counter component inside a file called ButtonCounter.vue, the component will be exposed as the file's default export:
-```
+```vue
 <script setup>
 import ButtonCounter from './ButtonCounter.vue'
 </script>
@@ -451,7 +451,7 @@ Let see one example,
 </ul>
 ```
 In the above code, we will be able to check if the condition resides in v-if all time while rendering the list or not.
-```
+```html
 <ul v-if="itemList && itemList.length > 0">
      <li v-if="itemList && itemList.length > 0" v-for="(item, index) in itemList" :key="item.id" @click="deleteItem(index)">
 	    {{ item }}
@@ -542,7 +542,7 @@ watch () {
 
 ## 10- Multiple V-Condition :
 Using numerous v-if conditions to render multiple elements from a Vue component’s render method is not recommended. Wrap the elements with <div > and the extra ones with <template >.
-```
+```vue
 < template v-if=“true” >
  < p >Paragraph 1 < / p >
  < p >Paragraph 2 < / p >
@@ -557,3 +557,28 @@ The more you use third-party packages  in your project, there can be security is
 . 
 
 ``//TODO``
+## Authors
+
+- [@AbdMakktof](https://github.com/alraies)
+
+
+## Contributing
+
+Contributions are always welcome!
+
+See `contributing.md` for ways to get started. ``//TODO``
+
+Please adhere to this project's `code of conduct`.
+
+
+## Appendix
+
+Any additional information goes here
+
+
+## Badges
+
+
+
+[![MIT License](https://img.shields.io/badge/@-Muraba-green)](https://choosealicense.com/licenses/mit/)
+
